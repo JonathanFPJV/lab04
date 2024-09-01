@@ -3,6 +3,7 @@ package com.example.lab04
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -125,13 +126,18 @@ fun Categorias(cat: String) {
 @Composable
 fun ListaNombres(nombres: List<String>, modifier: Modifier = Modifier) {
     LazyColumn(
-        modifier = modifier.padding(8.dp)
+        modifier = modifier
+            .padding(8.dp)
+            .background(MaterialTheme.colorScheme.surface) // Añadimos un fondo de color
+            .padding(8.dp) // Añadimos más padding
     ) {
         items(nombres) { nombre ->
             ItemNombre(nombre)
+            Spacer(modifier = Modifier.height(8.dp)) // Añadimos espacio entre los items
         }
     }
 }
+
 
 @Composable
 fun ItemNombre(nombre: String) {
