@@ -3,6 +3,7 @@ package com.example.lab04
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -110,17 +112,32 @@ fun PantallaPrincipal() {
 fun Categorias(cat: String) {
     AssistChip(
         onClick = { /* Acción al hacer clic en el chip */ },
-        label = { Text(cat) },
-        leadingIcon = {
-            Icon(Icons.Default.Edit, contentDescription = "Editar")
+        label = {
+            Text(
+                cat,
+                color = Color.White, 
+                style = MaterialTheme.typography.bodyMedium
+            )
         },
-        modifier = Modifier.padding(4.dp),
+        leadingIcon = {
+            Icon(
+                imageVector = Icons.Default.Edit,
+                contentDescription = "Editar",
+                tint = Color.White
+            )
+        },
+        modifier = Modifier
+            .padding(8.dp)
+            .shadow(4.dp, shape = MaterialTheme.shapes.medium)
+            .background(MaterialTheme.colorScheme.primary)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         colors = AssistChipDefaults.assistChipColors(
-            containerColor = Color. Green,
-            labelColor = Color.Black
+            containerColor = MaterialTheme.colorScheme.primary,
+            labelColor = Color.White
         )
     )
 }
+
 
 @Composable
 fun ListaNombres(nombres: List<String>, modifier: Modifier = Modifier) {
